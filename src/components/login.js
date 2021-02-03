@@ -10,21 +10,30 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 class Login extends React.Component {
 
-    submitLoginIn() {
-
+    submitLogin(e) {
+        e.preventDefault()
+        this.props.client.logIn(e.target.username.value, e.target.password.value)
+        .then(response => {
+            this.props.login(response.data.token)
+        })
+        .catch(err => {
+            alert("Unable to login at this time")
+            console.log(err)
+        })
     }
 
     submitSignUp(e) {
         e.preventDefault();
-        console.log(e.target.username.value, e.target.password.value)
         this.props.client.signUp(e.target.username.value, e.target.password.value)
             .then(response => {
-                console.log("response", response)
-                toastr.success(`User created: ${e.target.username.value}`)
-                document.getElementById("signup-form").reset()
+                if(response.status === 200) {
+                    toastr.success(`User created: ${e.target.username.value}`)
+                } else {
+                    toastr.error('An error occured.')
+                }
             })
             .catch(err => {
-                alert("Unable to login at this time")
+                alert("Unable to signup at this time")
                 console.log(err)
             })
     }
@@ -38,14 +47,14 @@ class Login extends React.Component {
                     Login
                 </Card.Header>
                 <Card.Body>
-                    <Form>
+                    <Form onSubmit={(e) => this.submitLogin(e)}>
                         <Form.Group controlId="formBasicEmail">
                             <Form.Label>Username</Form.Label>
-                            <Form.Control type="username"/>
+                            <Form.Control type="username" name="username" />
                         </Form.Group>
                         <Form.Group controlId="formBasicPassword">
                             <Form.Label>Password</Form.Label>
-                            <Form.Control type="Password"/>
+                            <Form.Control type="Password" name="password" />
                         </Form.Group>
                         <Button variant="primary" type="submit">
                             Login
