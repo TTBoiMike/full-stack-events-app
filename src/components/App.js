@@ -1,6 +1,6 @@
 import React from 'react';
 import Login from './login'
-import UserAccount from './userAccount'
+import UserAccount from './user/userAccount'
 import ApiClient from '../apiClient'
 
 class App extends React.Component {
@@ -30,6 +30,7 @@ class App extends React.Component {
   }
 
   render() {
+    console.log("token", this.state.token)
       if(this.state.token) {
         return <UserAccount logout={this.logout}/>
       } else {
