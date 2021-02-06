@@ -52,5 +52,13 @@ export default class ApiClient {
     createEvent(event) {
         return this.createUserAction('post', url, event)
     }
+    // get events from database
+    getEvents() {
+        return this.createUserAction('get', url)
+    }
+    //delete event  from databse
+    deleteEvent(id) {
+        return this.createUserAction('delete', `${url}${id}`)
+    }
 }
 
