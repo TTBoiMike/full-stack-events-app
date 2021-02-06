@@ -18,7 +18,7 @@ class UserAccount extends React.Component {
             <div>
                 <UserNavBar logout={this.props.logout}/>
                 <Container>
-                    <AddEventForm />
+                    <AddEventForm client={this.props.client}/>
                 </Container>
             </div>
         )

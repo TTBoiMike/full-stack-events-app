@@ -30,9 +30,8 @@ class App extends React.Component {
   }
 
   render() {
-    console.log("token", this.state.token)
       if(this.state.token) {
-        return <UserAccount logout={this.logout}/>
+        return <UserAccount client={this.apiClient} logout={this.logout}/>
       } else {
         return <Login login={this.login} client={this.apiClient}/>
       }

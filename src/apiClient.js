@@ -9,7 +9,7 @@ export default class ApiClient {
 
     createUserAction(method, url, data) {
         return axios({
-            methd: method,
+            method: method,
             url: url,
             headers: {
                 authorization: this.token()
@@ -48,7 +48,9 @@ export default class ApiClient {
         }) 
     }
 
+    // create API call (post) to http://localhost:3001/
     createEvent(event) {
+        return this.createUserAction('post', url, event)
     }
 }
 
