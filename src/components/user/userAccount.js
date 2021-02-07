@@ -3,6 +3,7 @@ import UserNavBar from './userNavBar'
 import AddEventForm from './addEventForm'
 import EventTable from './eventTable'
 import {Container} from 'react-bootstrap'
+import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom'
 
 class UserAccount extends React.Component {
     constructor(props) {
@@ -26,11 +27,19 @@ class UserAccount extends React.Component {
     render() {
         return (
             <div>
+                <Router>
                 <UserNavBar logout={this.props.logout}/>
                 <Container>
-                    <AddEventForm client={this.props.client}  fetchEvents={this.fetchEvents} updating={this.state.updating}/>
-                    <EventTable client={this.props.client} events={this.state.allEvents} fetchEvents={this.fetchEvents} updateEvent={this.updateEvent}/>
+                    <Switch>
+                        <Route path="/add">
+                            <AddEventForm client={this.props.client}  fetchEvents={this.fetchEvents} updating={this.state.updating}/>
+                        </Route>
+                        <Route path="/">
+                            <EventTable client={this.props.client} events={this.state.allEvents} fetchEvents={this.fetchEvents} updateEvent={this.updateEvent}/>
+                        </Route>
+                    </Switch>
                 </Container>
+                </Router>
             </div>
         )
     }

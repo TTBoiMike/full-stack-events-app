@@ -57,50 +57,31 @@ class AddEventForm extends React.Component {
 
     render() {
         return (
-                <Form className="mt-5" onChange={(e) => this.handleFormChange(e)} onSubmit={(e) => this.submitNewEvent(e)}>
-                    <Table bordered>
-                        <thead>
-                            <tr>
-                                <th>Add a New Event</th>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Event Name
-                                </td>
-                                <td>
-                                    Event Location
-                                </td>
-                                <td>
-                                    Event Date/Time
-                                </td>
-                                <td>
-                                    Event Description
-                                </td>
-                                <td>
-                                    Action
-                                </td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <td>
-                                <input type="text" className="form-control" name="name"></input>
-                            </td>
-                            <td>
-                                <input type="text" className="form-control" name="location"></input>
-                            </td>
-                            <td>
-                                <input type="date" name="date" className="form-control mb-2"></input>
-                                <input type="time" name="time" className="form-control"></input>
-                            </td>
-                            <td>
-                                <textarea className="form-control" name="description" rows="3"/>
-                            </td>
-                            <td>
-                                <button type="submit" className="btn btn-dark w-100" disabled={this.state.disabled}>Add Event</button>
-                            </td>
-                        </tbody>
-                    </Table>
-                </Form>
+            <Form onChange={(e) => this.handleFormChange(e)} onSubmit={(e) => this.submitNewEvent(e)}>
+            <div className="form-group">
+                <label htmlFor="name">Event Name</label>
+                <input type="text" className="form-control" name="name"></input>
+            </div>
+            <div className="form-group">
+                <label htmlFor="location">Event Location</label>
+                <input type="text" className="form-control" name="location"></input>
+            </div>
+            <div className="form-group row">
+                <div className="col">
+                    <label htmlFor="date">Event Date</label>
+                    <input type="date" name="date" className="form-control"></input>
+                </div>
+                <div className="col">
+                    <label htmlFor="time">Event Time</label>
+                    <input type="time" name="time" className="form-control"></input>
+                </div>
+            </div>
+            <div className="form-group">
+                <label htmlFor="description">Event Description</label>
+                <textarea className="form-control" name="description" rows="3"/>
+            </div>
+            <button type="submit" className="btn btn-dark" disabled={this.state.disabled}>Add Event</button>
+        </Form>
         )
     }
 }

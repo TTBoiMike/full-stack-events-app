@@ -1,26 +1,23 @@
 import React from 'react' 
 import {Navbar} from 'react-bootstrap'
 import {Nav} from 'react-bootstrap'
-import {Form} from 'react-bootstrap'
 import {Button} from 'react-bootstrap'
 import {Container} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import {Link} from 'react-router-dom'
 
 export default class UserNavBar extends React.Component {
 
     render() {
         return (
             <div>
-                <Navbar bg="light" variant="light">
+                <Navbar bg="light" variant="light" className="mb-5">
                     <Container>
-                        <Navbar.Brand href="#home">E V E N T</Navbar.Brand>
+                        <Link to="/" className="mr-3"><Navbar.Brand href="#home">E V E N T</Navbar.Brand></Link>
                         <Nav className="mr-auto">
-                            <Nav.Link>My Events</Nav.Link>
+                            <Link to="/" className="mr-3 nav-link">My Events</Link>
+                            <Link to="/add" className="nav-link">Add Event</Link>
                         </Nav>
-                        <Form inline>
-                        {/* <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                        <Button variant="outline-primary">Search</Button> */}
-                        </Form>
                         <Button variant="btn btn-dark" className="mr-2">Profile</Button>
                         <Button variant="outline-dark" onClick={() => this.props.logout()}>
                             Logout

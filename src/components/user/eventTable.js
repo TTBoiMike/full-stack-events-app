@@ -1,4 +1,5 @@
 import React from 'react'
+import EventFilterBar from './eventFilterBar'
 import {Form} from 'react-bootstrap'
 import {Table} from 'react-bootstrap'
 import {Button} from 'react-bootstrap'
@@ -47,7 +48,8 @@ class EventTable extends React.Component {
     render() {
         return (
             <div>
-                <h1>My EVENTS</h1>
+                <h1 className="mb-5">My EVENTS</h1>
+                <EventFilterBar events={this.props.events}/>
                 <Table responsive="lg" striped bordered hover>
                     <thead>
                         <tr>
