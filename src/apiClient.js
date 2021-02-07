@@ -56,9 +56,17 @@ export default class ApiClient {
     getEvents() {
         return this.createUserAction('get', url)
     }
+    // get event from database by id
+    getEvent(id) {
+        return this.createUserAction('get', `${url}${id}`)
+    }
     //delete event  from databse
     deleteEvent(id) {
         return this.createUserAction('delete', `${url}${id}`)
+    }
+    // update event favourite status
+    updateEvent(id, event) {
+        return this.createUserAction('put', `${url}${id}`, event)
     }
 }
 

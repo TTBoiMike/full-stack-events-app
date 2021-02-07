@@ -10,7 +10,7 @@ class UserAccount extends React.Component {
         this.state = {
             allEvents: [],
             // for filtering events
-            filteredEvents: []
+            filteredEvents: [],
         }
     }
 
@@ -28,8 +28,8 @@ class UserAccount extends React.Component {
             <div>
                 <UserNavBar logout={this.props.logout}/>
                 <Container>
-                    <AddEventForm client={this.props.client} />
-                    <EventTable client={this.props.client} events={this.state.allEvents} fetchEvents={this.fetchEvents}/>
+                    <AddEventForm client={this.props.client}  fetchEvents={this.fetchEvents} updating={this.state.updating}/>
+                    <EventTable client={this.props.client} events={this.state.allEvents} fetchEvents={this.fetchEvents} updateEvent={this.updateEvent}/>
                 </Container>
             </div>
         )
