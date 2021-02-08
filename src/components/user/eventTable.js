@@ -4,7 +4,7 @@ import {Form} from 'react-bootstrap'
 import {Table} from 'react-bootstrap'
 import {Button} from 'react-bootstrap'
 import star from '../../assets/star-regular.svg'
-import favstar from '../../assets/star-regular-filled.svg'
+import favstar from '../../assets/star-solid.svg'
 import '../../App.css'
 import {Link} from 'react-router-dom'
 
