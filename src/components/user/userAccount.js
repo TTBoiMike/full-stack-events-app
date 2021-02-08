@@ -1,6 +1,6 @@
 import React from 'react'
 import UserNavBar from './userNavBar'
-import AddEventForm from './addEventForm'
+import EventForm from './eventForm'
 import EventTable from './eventTable'
 import {Container} from 'react-bootstrap'
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom'
@@ -32,8 +32,9 @@ class UserAccount extends React.Component {
                 <Container>
                     <Switch>
                         <Route path="/add">
-                            <AddEventForm client={this.props.client}  fetchEvents={this.fetchEvents} updating={this.state.updating}/>
+                            <EventForm client={this.props.client}  fetchEvents={this.fetchEvents} updating={this.state.updating}/>
                         </Route>
+                        <Route path="/update/:id" render={(props) => <EventForm {...props} client={this.props.client} fetchEvents={this.fetchEvents} /> } />
                         <Route path="/">
                             <EventTable client={this.props.client} events={this.state.allEvents} fetchEvents={this.fetchEvents} updateEvent={this.updateEvent}/>
                         </Route>

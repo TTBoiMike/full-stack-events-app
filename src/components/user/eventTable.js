@@ -6,6 +6,7 @@ import {Button} from 'react-bootstrap'
 import star from '../../assets/star-regular.svg'
 import favstar from '../../assets/star-regular-filled.svg'
 import '../../App.css'
+import {Link} from 'react-router-dom'
 
 class EventTable extends React.Component {
 
@@ -38,7 +39,9 @@ class EventTable extends React.Component {
                 <td>{event.location}</td>
                 <td>{event.description}</td>
                 <td>
-                    <Button variant="btn btn-dark" onClick={(e) => this.updateEvent(e, event._id)}>Update</Button>
+                    <Link to={`/update/${event._id}`}>
+                        <Button variant="btn btn-dark">Update</Button>
+                    </Link>
                     <Button variant="outline-dark" onClick={() => this.deleteEvent(event._id)}>delete</Button>
                 </td>
             </tr>

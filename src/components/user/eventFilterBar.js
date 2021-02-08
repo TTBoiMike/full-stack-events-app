@@ -30,7 +30,7 @@ class EventFilterBar extends React.Component {
                     {this.buildLocationFilter()}
                 </select>
                 </Form>
-                <Link>
+                <Link to="/add">
                     <Button className="btn btn-dark">Add Event</Button>
                 </Link>
             </div>
