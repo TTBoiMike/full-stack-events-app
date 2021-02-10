@@ -1,5 +1,4 @@
 import React from 'react'
-import EventFilterBar from './eventFilterBar'
 import {Form} from 'react-bootstrap'
 import {Table} from 'react-bootstrap'
 import {Button} from 'react-bootstrap'
@@ -18,13 +17,10 @@ class EventTable extends React.Component {
 
     // add event as favourite
     favouriteEvent = (id) => {
-        this.props.client.getEvent(id)
-            .then((response) => {
-                let event = response.data[0]
-                event.favourite = !event.favourite
-                this.props.client.updateEvent(id, event)
-                .then(() => this.props.fetchEvents())
-            })
+        let [event] = this.props.events.filter((event) => event._id === id)
+        event.favourite = !event.favourite
+        this.props.client.updateEvent(id, event)
+            .then(() => this.props.fetchEvents())
     }
 
     // take all events in database as props and map over the array to produce html for each element
@@ -51,8 +47,6 @@ class EventTable extends React.Component {
     render() {
         return (
             <div>
-                <h1 className="mb-5">My EVENTS</h1>
-                <EventFilterBar events={this.props.events}/>
                 <Table responsive="lg" striped bordered hover>
                     <thead>
                         <tr>

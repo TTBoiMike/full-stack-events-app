@@ -5,29 +5,19 @@ import {Link} from 'react-router-dom'
 
 class EventFilterBar extends React.Component {
 
-    buildLocationFilter() {
-        let locations = [];
-        this.props.events.forEach(event => {
-            let eventLocation = event.location.charAt(0).toUpperCase()+event.location.slice(1)
-            locations.push(eventLocation)
-        })
-        let filtLocations = [...new Set(locations)]
-        return filtLocations.map(location => {
-            return <option value={location}>{location}</option>
-        })
+    handleFilterInputs(e) {
+        let filter = e.currentTarget.filter.value
+        this.props.filterFunction(e, filter)
     }
 
     render() {
         return (
             <div className="filter-bar mb-5 p-3 d-flex justify-content-between rounded">
-                <Form className="d-flex bordered">
-                <select class="custom-select">
+                <Form className="d-flex align-items-center" onChange={(e) => this.handleFilterInputs(e)}>
+                <select class="custom-select" id="filter">
                     <option value="recently-added" selected>Recently Added</option>
                     <option value="by-date">Filter by Date</option>
-                    <option value="favourites">Favourites</option>
-                </select>
-                <select class="custom-select">
-                    {this.buildLocationFilter()}
+                    <option value="favourites">Show Favourites</option>
                 </select>
                 </Form>
                 <Link to="/add">

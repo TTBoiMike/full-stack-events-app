@@ -1,6 +1,7 @@
 import React from 'react'
 import {Form} from 'react-bootstrap'
 import {Table} from 'react-bootstrap'
+import {Button} from 'react-bootstrap'
 import {Redirect} from 'react-router-dom'
 
 class EventForm extends React.Component {
@@ -114,7 +115,8 @@ class EventForm extends React.Component {
                     <label htmlFor="description">Event Description</label>
                     <textarea className="form-control" name="description" rows="3" value={this.state.event.description}/>
                 </div>
-                <button type="submit" className="btn btn-dark" disabled={this.state.disabled}>{this.state.updating ? "Update Event" : "Add Event"}</button>
+                <button type="submit" className="btn btn-dark mr-3" disabled={this.state.disabled}>{this.state.updating ? "Update Event" : "Add Event"}</button>
+                <Button variant="outline-dark" onClick={() => this.setState({redirectToReferrer: true})}>Cancel</Button>
             </Form>
             )
         }
