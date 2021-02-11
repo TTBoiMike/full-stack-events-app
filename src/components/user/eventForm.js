@@ -13,8 +13,7 @@ class EventForm extends React.Component {
                 date: "",
                 time: "",
                 description: "",
-                favourite: false,
-                user: this.props.userInfo.userName
+                favourite: false
             },
             disabled: false,
             updating: false,
@@ -35,8 +34,7 @@ class EventForm extends React.Component {
                             date: date,
                             time: time,
                             description: description,
-                            favourite: favourite,
-                            user: this.props.userInfo.userName
+                            favourite: favourite
                         }
                     })
                 })
@@ -58,7 +56,6 @@ class EventForm extends React.Component {
                 time: "",
                 description: "",
                 favourite: false,
-                user: this.props.userInfo.userName
             }
         })
     }
@@ -79,7 +76,8 @@ class EventForm extends React.Component {
             this.props.client.updateEvent(this.props.match.params.id, this.state.event)
                 .then(() => this.props.fetchEvents())
         } else {
-            this.props.client.createEvent(this.state.event)
+            let user = this.props.userInfo.userName
+            this.props.client.createEvent({...this.state.event, user})
                 .then(() => {this.props.fetchEvents()})
         }
         this.formReset(e)

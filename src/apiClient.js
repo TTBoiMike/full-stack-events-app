@@ -1,5 +1,5 @@
 import axios from 'axios'
-const url = 'http://localhost:3001/'
+const url = 'https://fs-events-app.herokuapp.com/'
 
 export default class ApiClient {
     constructor(token, logoutFunction) {
