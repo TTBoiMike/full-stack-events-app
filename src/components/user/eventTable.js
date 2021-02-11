@@ -40,6 +40,9 @@ class EventTable extends React.Component {
                     </Link>
                     <Button variant="outline-dark" onClick={() => this.deleteEvent(event._id)}>delete</Button>
                 </td>
+                <td>
+                    {event.user}
+                </td>
             </tr>
         })
     }
@@ -55,6 +58,7 @@ class EventTable extends React.Component {
                             <th>Location</th>
                             <th>Description</th>
                             <th>Action</th>
+                            <th>Added by</th>
                         </tr>
                     </thead>
                     <tbody>

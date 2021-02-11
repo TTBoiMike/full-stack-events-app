@@ -1,6 +1,5 @@
 import React from 'react'
 import {Form} from 'react-bootstrap'
-import {Table} from 'react-bootstrap'
 import {Button} from 'react-bootstrap'
 import {Redirect} from 'react-router-dom'
 
@@ -14,7 +13,8 @@ class EventForm extends React.Component {
                 date: "",
                 time: "",
                 description: "",
-                favourite: false
+                favourite: false,
+                user: this.props.userInfo.userName
             },
             disabled: false,
             updating: false,
@@ -35,7 +35,8 @@ class EventForm extends React.Component {
                             date: date,
                             time: time,
                             description: description,
-                            favourite: favourite
+                            favourite: favourite,
+                            user: this.props.userInfo.userName
                         }
                     })
                 })
@@ -56,7 +57,8 @@ class EventForm extends React.Component {
                 date: "",
                 time: "",
                 description: "",
-                favourite: false
+                favourite: false,
+                user: this.props.userInfo.userName
             }
         })
     }

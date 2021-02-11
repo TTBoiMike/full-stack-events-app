@@ -5,25 +5,36 @@ import {Card} from 'react-bootstrap'
 import {Form} from 'react-bootstrap'
 import {Container} from 'react-bootstrap'
 import {Button} from 'react-bootstrap'
-import {Tabs} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 class Login extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            loginDisabled: false,
+            signupDisabled: false
+        }
+    }
 
     submitLogin(e) {
         e.preventDefault()
+        this.setState({loginDisabled: true})
         this.props.client.logIn(e.target.username.value, e.target.password.value)
         .then(response => {
-            this.props.login(response.data.token)
+            this.setState({loginDisabled: false})
+            let {_id} = response.data._doc
+            this.props.login(_id, response.data.token)
         })
         .catch(err => {
             alert("Unable to login at this time")
             console.log(err)
+            this.setState({loginDisabled: false})
         })
     }
 
     submitSignUp(e) {
         e.preventDefault();
+        this.setState({signupDisabled: true})
         this.props.client.signUp(e.target.username.value, e.target.password.value)
             .then(response => {
                 if(response.status === 200) {
@@ -31,24 +42,26 @@ class Login extends React.Component {
                 } else {
                     toastr.error('An error occured.')
                 }
+                this.setState({signupDisabled: false})
             })
             .catch(err => {
                 alert("Unable to signup at this time")
                 console.log(err)
+                this.setState({signupDisabled: false})
             })
+            .finally(() => document.getElementById('signup-form').reset())
     }
 
     render() {
         return (
             <Container className="mt-5 d-flex justify-content-center">
-                
                 <Card style={{ width: '18rem' }}>
                 <Card.Header>
                     Login
                 </Card.Header>
                 <Card.Body>
                     <Form onSubmit={(e) => this.submitLogin(e)}>
-                        <Form.Group controlId="formBasicEmail">
+                        <Form.Group controlId="formBasicEmail" id="login-form">
                             <Form.Label>Username</Form.Label>
                             <Form.Control type="username" name="username" />
                         </Form.Group>

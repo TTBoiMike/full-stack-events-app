@@ -47,8 +47,15 @@ export default class ApiClient {
             }
         }) 
     }
-
-    // create API call (post) to http://localhost:3001/
+    // get user info
+    getUser(id) {
+        return this.createUserAction('get', `${url}user/${id}`)
+    }
+    // update user info
+    updateUser(id, user) {
+        return this.createUserAction('put', `${url}user/${id}`, user)
+    }
+    // create new event in database
     createEvent(event) {
         return this.createUserAction('post', url, event)
     }

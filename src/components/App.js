@@ -7,7 +7,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      token: window.localStorage.getItem("token")
+      token: window.localStorage.getItem("token"),
+      userId: window.localStorage.getItem("UserId")
     }
     this.apiClient = new ApiClient(
       () => this.state.token,
@@ -15,15 +16,19 @@ class App extends React.Component {
     )
   }
 
-  login = (token) => {
+
+  login = (userId, token) => {
     window.localStorage.setItem("token", token)
+    window.localStorage.setItem("UserId", userId)
     this.setState({
-      token
+      token,
+      userId
     })
   }
 
   logout = () => {
     window.localStorage.removeItem("token")
+    window.localStorage.removeItem("UserId")
     this.setState({
       token: undefined
     })
@@ -31,7 +36,7 @@ class App extends React.Component {
 
   render() {
       if(this.state.token) {
-        return <UserAccount client={this.apiClient} logout={this.logout}/>
+        return <UserAccount userId={this.state.userId} client={this.apiClient} logout={this.logout}/>
       } else {
         return <Login login={this.login} client={this.apiClient}/>
       }
