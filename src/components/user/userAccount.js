@@ -60,7 +60,7 @@ class UserAccount extends React.Component {
                 <Container>
                     <Switch>
                         <Route exact path="/">
-                            <h1 className="mb-5">My EVENTS</h1>
+                            <h1 className="mb-5">All EVENTS</h1>
                             <EventFilterBar filterFunction={this.filterEvents}/>
                             <EventTable client={this.props.client} events={this.state.filteredEvents} fetchEvents={this.fetchEvents} updateEvent={this.updateEvent}/>
                         </Route>

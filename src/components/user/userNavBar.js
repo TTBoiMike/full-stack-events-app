@@ -15,7 +15,7 @@ export default class UserNavBar extends React.Component {
                     <Container>
                         <Link to="/" className="mr-3"><Navbar.Brand href="#home">E V E N T</Navbar.Brand></Link>
                         <Nav className="mr-auto">
-                            <Link to="/" className="mr-3 nav-link">My Events</Link>
+                            <Link to="/" className="mr-3 nav-link">All Events</Link>
                         </Nav>
                         <Link to="/profile"><Button variant="btn btn-dark" className="mr-2">Profile</Button></Link>
                         <Button variant="outline-dark" onClick={() => this.props.logout()}>
