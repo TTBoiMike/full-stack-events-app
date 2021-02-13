@@ -35,7 +35,7 @@ class EventTable extends React.Component {
                 <td>{event.location}</td>
                 <td>{event.description}</td>
                 <td>
-                    <Link to={`/user/update/${event._id}`}>
+                    <Link to={`/full-stack-events-app/user/update/${event._id}`}>
                         <Button variant="btn btn-dark">Update</Button>
                     </Link>
                     <Button variant="outline-dark" onClick={() => this.deleteEvent(event._id)}>delete</Button>
