@@ -73,7 +73,7 @@ class Login extends React.Component {
                             Login
                         </Button>
                     </Form>
-                    <small>username: mike <br/> password: test</small>
+                    <small>username: mike, keith, july <br/> password: test</small>
                 </Card.Body>
                 </Card>
 
