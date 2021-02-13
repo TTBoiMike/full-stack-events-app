@@ -13,11 +13,11 @@ export default class UserNavBar extends React.Component {
             <div>
                 <Navbar bg="light" variant="light" className="mb-5">
                     <Container>
-                        <Link to="/" className="mr-3"><Navbar.Brand href="#home">E V E N T</Navbar.Brand></Link>
+                        <Link to="/user" className="mr-3"><Navbar.Brand href="#home">E V E N T</Navbar.Brand></Link>
                         <Nav className="mr-auto">
-                            <Link to="/" className="mr-3 nav-link">All Events</Link>
+                            <Link to="/user" className="mr-3 nav-link">View Events</Link>
                         </Nav>
-                        <Link to="/profile"><Button variant="btn btn-dark" className="mr-2">Profile</Button></Link>
+                        <Link to="/user/profile"><Button variant="btn btn-dark" className="mr-2">Profile</Button></Link>
                         <Button variant="outline-dark" onClick={() => this.props.logout()}>
                             Logout
                         </Button>

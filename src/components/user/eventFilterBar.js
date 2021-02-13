@@ -20,7 +20,7 @@ class EventFilterBar extends React.Component {
                     <option value="favourites">Show Favourites</option>
                 </select>
                 </Form>
-                <Link to="/add">
+                <Link to="/user/add">
                     <Button className="btn btn-dark">Add Event</Button>
                 </Link>
             </div>

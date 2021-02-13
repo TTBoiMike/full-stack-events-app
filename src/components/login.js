@@ -73,10 +73,11 @@ class Login extends React.Component {
                             Login
                         </Button>
                     </Form>
+                    <small>username: mike <br/> password: test</small>
                 </Card.Body>
                 </Card>
 
-                <Card style={{ width: '18rem' }}>
+                {/* <Card style={{ width: '18rem' }}>
                 <Card.Header>
                     Signup
                 </Card.Header>
@@ -95,7 +96,7 @@ class Login extends React.Component {
                         </Button>
                     </Form>
                 </Card.Body>
-                </Card>
+                </Card> */}
             
             </Container>
         )

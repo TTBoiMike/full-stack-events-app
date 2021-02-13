@@ -89,7 +89,7 @@ class EventForm extends React.Component {
 
     render() {
         if(this.state.redirectToReferrer) {
-            return <Redirect to="/" />
+            return <Redirect to="/user" />
         } else {
             return (
                 <Form onChange={(e) => this.handleFormChange(e)} onSubmit={(e) => this.submitNewEvent(e)}>

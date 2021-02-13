@@ -59,16 +59,16 @@ class UserAccount extends React.Component {
                 <UserNavBar logout={this.props.logout}/>
                 <Container>
                     <Switch>
-                        <Route exact path="/">
-                            <h1 className="mb-5">All EVENTS</h1>
+                        <Route exact path="/user">
+                            <h1 className="mb-5">E V E N T S</h1>
                             <EventFilterBar filterFunction={this.filterEvents}/>
                             <EventTable client={this.props.client} events={this.state.filteredEvents} fetchEvents={this.fetchEvents} updateEvent={this.updateEvent}/>
                         </Route>
-                        <Route exact path="/add">
+                        <Route exact path="/user/add">
                             <EventForm userInfo={this.state.user} client={this.props.client}  fetchEvents={this.fetchEvents} updating={this.state.updating}/>
                         </Route>
-                        <Route exact path="/update/:id" render={(props) => <EventForm {...props} client={this.props.client} fetchEvents={this.fetchEvents} /> } />
-                        <Route exact path="/profile">
+                        <Route exact path="/user/update/:id" render={(props) => <EventForm {...props} client={this.props.client} fetchEvents={this.fetchEvents} /> } />
+                        <Route exact path="/user/profile">
                             <Profile updateUserName={this.updateUserName} userInfo={this.state.user} client={this.props.client} events={this.state.allEvents}/>
                         </Route>
                     </Switch>

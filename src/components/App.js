@@ -2,13 +2,15 @@ import React from 'react';
 import Login from './login'
 import UserAccount from './user/userAccount'
 import ApiClient from '../apiClient'
+import {Redirect} from 'react-router-dom'
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       token: window.localStorage.getItem("token"),
-      userId: window.localStorage.getItem("UserId")
+      userId: window.localStorage.getItem("UserId"),
+      isLoggedIn: false
     }
     this.apiClient = new ApiClient(
       () => this.state.token,
@@ -21,8 +23,9 @@ class App extends React.Component {
     window.localStorage.setItem("token", token)
     window.localStorage.setItem("UserId", userId)
     this.setState({
-      token,
-      userId
+      token: token,
+      userId: userId,
+      isLoggedIn: true
     })
   }
 
@@ -30,12 +33,14 @@ class App extends React.Component {
     window.localStorage.removeItem("token")
     window.localStorage.removeItem("UserId")
     this.setState({
-      token: undefined
+      token: undefined,
+      userId: undefined,
+      isLoggedIn: false
     })
   }
 
-  render() {
-      if(this.state.token) {
+  render() {   
+      if(this.state.isLoggedIn) {
         return <UserAccount userId={this.state.userId} client={this.apiClient} logout={this.logout}/>
       } else {
         return <Login login={this.login} client={this.apiClient}/>
