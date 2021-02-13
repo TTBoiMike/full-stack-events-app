@@ -18,9 +18,11 @@ export default class UserNavBar extends React.Component {
                             <Link to="/full-stack-events-app/user" className="mr-3 nav-link">View Events</Link>
                         </Nav>
                         <Link to="/full-stack-events-app/user/profile"><Button variant="btn btn-dark" className="mr-2">Profile</Button></Link>
+                        <Link to="/full-stack-events-app">
                         <Button variant="outline-dark" onClick={() => this.props.logout()}>
                             Logout
                         </Button>
+                        </Link>
                     </Container>
                 </Navbar>
             </div>
