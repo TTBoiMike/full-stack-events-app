@@ -59,7 +59,7 @@ class UserAccount extends React.Component {
                 <UserNavBar logout={this.props.logout}/>
                 <Container>
                     <Switch>
-                        <Route exact path="/full-stack-events-app/">
+                        <Route exact path="/full-stack-events-app/user">
                             <h1 className="mb-5">E V E N T S</h1>
                             <EventFilterBar filterFunction={this.filterEvents}/>
                             <EventTable client={this.props.client} events={this.state.filteredEvents} fetchEvents={this.fetchEvents} updateEvent={this.updateEvent}/>
