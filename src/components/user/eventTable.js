@@ -24,7 +24,12 @@ class EventTable extends React.Component {
                     <img className="fav-star" alt="" src={event.favourite ? favstar : star} onClick={(e) => this.favouriteEvent(event._id)}/>
                     {event.name}
                 </td>
-                <td>{event.date}</td>
+                <td className="d-flex flex-column">
+                    {event.date}
+                    <span>
+                    Starts at {event.time}
+                    </span>
+                </td>
                 <td>{event.location}</td>
                 <td>{event.description}</td>
                 <td>

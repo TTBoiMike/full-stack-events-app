@@ -101,10 +101,10 @@ class EventForm extends React.Component {
 
     render() {
         if (this.state.redirectToReferrer) {
-            return <Redirect to="/full-stack-events-app/user" />
+            return <Redirect exact to="/full-stack-events-app/user" />
         } else {
             return (
-                <div>
+                <div className="mb-5">
                     <h3 className="my-5">{this.state.updating ? "Update" : "Add New"} Event</h3>
                     <Form onChange={(e) => this.handleFormChange(e)} onSubmit={(e) => this.submitNewEvent(e)}>
                         <div className="form-group">
