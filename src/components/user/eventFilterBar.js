@@ -1,7 +1,7 @@
 import React from 'react'
-import {Form} from 'react-bootstrap'
-import {Button} from 'react-bootstrap'
-import {Link} from 'react-router-dom'
+import { Form, Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+import AddIcon from '../../assets/plus-circle-solid.svg'
 
 class EventFilterBar extends React.Component {
 
@@ -12,17 +12,22 @@ class EventFilterBar extends React.Component {
 
     render() {
         return (
-            <div className="filter-bar mb-5 p-3 d-flex justify-content-between rounded">
-                <Form className="d-flex align-items-center" onChange={(e) => this.handleFilterInputs(e)}>
-                <select class="custom-select" id="filter">
-                    <option value="recently-added" selected>Recently Added</option>
-                    <option value="by-date">Filter by Date</option>
-                    <option value="favourites">Show Favourites</option>
-                </select>
-                </Form>
-                <Link to="/full-stack-events-app/user/add">
-                    <Button className="btn btn-dark">Add Event</Button>
-                </Link>
+            <div className="filter-bar my-5 rounded d-flex justify-content-between align-items-center">
+                <div>
+                    <h3><span className="text-purple">{this.props.allEvents.length}</span> {this.props.allEvents.length === 1 ? "Event" : "Events"}</h3>
+                </div>
+                <div className="d-flex align-items-center">
+                    <Form className="mr-3" onChange={(e) => this.handleFilterInputs(e)}>
+                        <select id="filter">
+                            <option value="recently-added" selected>Recently Added</option>
+                            <option value="by-date">Filter by Date</option>
+                            <option value="favourites">Show Favourites</option>
+                        </select>
+                    </Form>
+                    <Link to="/full-stack-events-app/user/add">
+                        <Button variant="btn button" className="d-flex align-items-center"><img height="20px" className="mr-1" src={AddIcon} alt="" />Add Event</Button>
+                    </Link>
+                </div>
             </div>
         )
     }

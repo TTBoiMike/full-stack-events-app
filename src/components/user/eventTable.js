@@ -1,5 +1,4 @@
 import React from 'react'
-import {Form} from 'react-bootstrap'
 import {Table} from 'react-bootstrap'
 import {Button} from 'react-bootstrap'
 import star from '../../assets/star-regular.svg'
@@ -8,12 +7,6 @@ import '../../App.css'
 import {Link} from 'react-router-dom'
 
 class EventTable extends React.Component {
-
-    // delete event
-    deleteEvent = (id) => {
-        this.props.client.deleteEvent(id)
-            .then(() => this.props.fetchEvents())
-    }
 
     // add event as favourite
     favouriteEvent = (id) => {
@@ -28,20 +21,19 @@ class EventTable extends React.Component {
         return this.props.events.map(event => {
             return <tr id={event._id}>
                 <td>
-                    <img className="fav-star" src={event.favourite ? favstar : star} onClick={(e) => this.favouriteEvent(event._id)}/>
+                    <img className="fav-star" alt="" src={event.favourite ? favstar : star} onClick={(e) => this.favouriteEvent(event._id)}/>
                     {event.name}
                 </td>
                 <td>{event.date}</td>
                 <td>{event.location}</td>
                 <td>{event.description}</td>
                 <td>
-                    <Link to={`/full-stack-events-app/user/update/${event._id}`}>
-                        <Button variant="btn btn-dark">Update</Button>
-                    </Link>
-                    <Button variant="outline-dark" onClick={() => this.deleteEvent(event._id)}>delete</Button>
+                    {event.user}
                 </td>
                 <td>
-                    {event.user}
+                    <Link to={`/full-stack-events-app/user/update/${event._id}`}>
+                        <Button className="w-100" variant="btn button">Manage Event</Button>
+                    </Link>
                 </td>
             </tr>
         })
@@ -50,15 +42,15 @@ class EventTable extends React.Component {
     render() {
         return (
             <div>
-                <Table responsive="lg" striped bordered hover>
+                <Table responsive="lg" variant="dark" striped bordered hover>
                     <thead>
                         <tr>
                             <th>Event</th>
                             <th>Date</th>
                             <th>Location</th>
                             <th>Description</th>
-                            <th>Action</th>
                             <th>Added by</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>

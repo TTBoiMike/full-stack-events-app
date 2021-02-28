@@ -56,12 +56,11 @@ class UserAccount extends React.Component {
         return (
             <div>
                 <Router>
-                <UserNavBar logout={this.props.logout}/>
+                <UserNavBar/>
                 <Container>
                     <Switch>
                         <Route exact path="/full-stack-events-app/user">
-                            <h1 className="mb-5">E V E N T S</h1>
-                            <EventFilterBar filterFunction={this.filterEvents}/>
+                            <EventFilterBar filterFunction={this.filterEvents} allEvents={this.state.allEvents}/>
                             <EventTable client={this.props.client} events={this.state.filteredEvents} fetchEvents={this.fetchEvents} updateEvent={this.updateEvent}/>
                         </Route>
                         <Route exact path="/full-stack-events-app/user/add">
@@ -69,7 +68,7 @@ class UserAccount extends React.Component {
                         </Route>
                         <Route exact path="/full-stack-events-app/user/update/:id" render={(props) => <EventForm {...props} client={this.props.client} fetchEvents={this.fetchEvents} /> } />
                         <Route exact path="/full-stack-events-app/user/profile">
-                            <Profile updateUserName={this.updateUserName} userInfo={this.state.user} client={this.props.client} events={this.state.allEvents}/>
+                            <Profile logout={this.props.logout} updateUserName={this.updateUserName} userInfo={this.state.user} client={this.props.client} events={this.state.allEvents}/>
                         </Route>
                     </Switch>
                 </Container>

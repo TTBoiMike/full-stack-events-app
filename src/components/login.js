@@ -54,26 +54,21 @@ class Login extends React.Component {
 
     render() {
         return (
-            <Container className="mt-5 d-flex justify-content-center">
-                <Card style={{ width: '18rem' }}>
-                <Card.Header>
-                    Login
-                </Card.Header>
+            <Container className="mt-5 d-flex justify-content-center align-items-center">
+                <Card style={{ width: '18rem' }} className="login-container">
                 <Card.Body>
                     <Form onSubmit={(e) => this.submitLogin(e)}>
                         <Form.Group controlId="formBasicEmail" id="login-form">
-                            <Form.Label>Username</Form.Label>
-                            <Form.Control type="username" name="username" />
+                            <input style={{width: "100%"}} placeholder="Username" className="input-styled" type="username" name="username" />
                         </Form.Group>
                         <Form.Group controlId="formBasicPassword">
-                            <Form.Label>Password</Form.Label>
-                            <Form.Control type="Password" name="password" />
+                            <input style={{width: "100%"}} placeholder="Password" className="input-styled"type="Password" name="password" />
                         </Form.Group>
-                        <Button variant="primary" type="submit">
+                        <Button variant="btn button" className="my-2" type="submit">
                             Login
                         </Button>
                     </Form>
-                    <small>username: mike, keith, july <br/> password: test</small>
+                    <small>Sample username: mike, july, keith<br/> Sample password: test</small>
                 </Card.Body>
                 </Card>
 

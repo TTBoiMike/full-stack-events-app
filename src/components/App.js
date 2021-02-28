@@ -2,7 +2,6 @@ import React from 'react';
 import Login from './login'
 import UserAccount from './user/userAccount'
 import ApiClient from '../apiClient'
-import {Redirect} from 'react-router-dom'
 
 class App extends React.Component {
   constructor(props) {
