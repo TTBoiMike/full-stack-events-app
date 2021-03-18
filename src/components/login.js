@@ -31,19 +31,12 @@ let Login = (props) => {
             })
     }
 
-<<<<<<< HEAD
     return (
         <Container className="mt-5 d-flex justify-content-center">
             <Card style={{ width: '18rem' }}>
                 <Card.Header>
                     Login
                 </Card.Header>
-=======
-    render() {
-        return (
-            <Container className="mt-5 d-flex justify-content-center align-items-center">
-                <Card style={{ width: '18rem' }} className="login-container">
->>>>>>> ec386227a2d32cb187c7cc9ee2b456bf2ecdd503
                 <Card.Body>
                     <Form onSubmit={(e) => handleLogin(e)}>
                         <Form.Group controlId="formBasicEmail" id="login-form">
@@ -56,32 +49,7 @@ let Login = (props) => {
                             Login
                         </Button>
                     </Form>
-<<<<<<< HEAD
                     <small>username: mike, keith, july <br /> password: test</small>
-=======
-                    <small>Sample username: mike, july, keith<br/> Sample password: test</small>
-                </Card.Body>
-                </Card>
-
-                {/* <Card style={{ width: '18rem' }}>
-                <Card.Header>
-                    Signup
-                </Card.Header>
-                <Card.Body>
-                    <Form onSubmit={(e) => this.submitSignUp(e)} id="signup-form">
-                        <Form.Group controlId="formBasicEmail">
-                            <Form.Label>Create Username</Form.Label>
-                            <Form.Control type="username" name="username" required/>
-                        </Form.Group>
-                        <Form.Group controlId="formBasicPassword">
-                            <Form.Label>Create Password</Form.Label>
-                            <Form.Control type="Password" name="password" required/>
-                        </Form.Group>
-                        <Button variant="primary" type="submit">
-                            Signup
-                        </Button>
-                    </Form>
->>>>>>> ec386227a2d32cb187c7cc9ee2b456bf2ecdd503
                 </Card.Body>
             </Card>
         </Container>
