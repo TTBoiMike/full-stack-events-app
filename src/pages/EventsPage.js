@@ -1,6 +1,18 @@
+import { Container } from 'react-bootstrap';
+import HeaderNav from '../components/HeaderNav'
+import EventsTable from '../components/EventsTable'
+import EventFilterBar from '../components/EventFilterBar'
+
+
 let EventsPage = () => {
     return (
-        <h1>Add Event Page</h1>
+        <>
+            <HeaderNav />
+            <Container>
+                <EventFilterBar />
+                <EventsTable />
+            </Container>
+        </>
     )
 }
 

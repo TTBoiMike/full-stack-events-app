@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css'
 import ApiClient from './apiClient'
 import { AccountPage, AddEvent, UpdateEvent, EventsPage, LoginPage } from './pages'
 import ProtectedRoute from './components/protectedRoute'
@@ -38,14 +40,14 @@ let App = () => {
   window.localStorage.removeItem("EventsAppUser")
   window.localStorage.removeItem("EventsAppUserToken")
   return (
-    <div id="app">
+    <div id="App">
       <Router>
         <Switch>
           <Route exact path="/" render={() => <LoginPage apiClient={apiClient} loggedIn={loggedIn} logInFunc={loginFunction} />} />
           <ProtectedRoute exact path="/events" component={EventsPage} loggedIn={loggedIn} />
-          <ProtectedRoute exact path="/user/profile" component={AccountPage} loggedIn={loggedIn} />
           <ProtectedRoute exact path="/events/add" component={AddEvent} loggedIn={loggedIn} />
           <ProtectedRoute exact path="/events/update/:id" component={UpdateEvent} loggedIn={loggedIn} />
+          <ProtectedRoute exact path="/profile" component={AccountPage} loggedIn={loggedIn} />
         </Switch>
       </Router>
     </div>

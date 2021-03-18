@@ -1,11 +1,5 @@
-import React, { useState } from 'react'
-import toastr from 'toastr'
-import 'toastr/build/toastr.min.css'
-import { Card } from 'react-bootstrap'
-import { Form } from 'react-bootstrap'
-import { Container } from 'react-bootstrap'
-import { Button } from 'react-bootstrap'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import React, { useState } from 'react';
+import { Card, Form, Container, Button } from 'react-bootstrap';
 
 let Login = (props) => {
     // disabled login button to prevent multiple requests
@@ -43,10 +37,10 @@ let Login = (props) => {
                             <input style={{width: "100%"}} placeholder="Username" className="input-styled" type="username" name="username" />
                         </Form.Group>
                         <Form.Group controlId="formBasicPassword">
-                            <input style={{width: "100%"}} placeholder="Password" className="input-styled"type="Password" name="password" />
+                            <input style={{width: "100%"}} placeholder="Password" className="input-styled" type="Password" name="password" />
                         </Form.Group>
-                        <Button variant="btn button" className="my-2" type="submit">
-                            Login
+                        <Button variant="primary" className="my-2" type="submit">
+                            {disabled ? "...logging in" : "login"}
                         </Button>
                     </Form>
                     <small>username: mike, keith, july <br /> password: test</small>

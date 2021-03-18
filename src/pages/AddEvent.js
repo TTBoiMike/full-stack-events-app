@@ -1,6 +1,10 @@
+import HeaderNav from '../components/HeaderNav'
+
 let AddEvent = () => {
     return (
-        <h1>Add Event Page</h1>
+        <>
+            <HeaderNav />
+        </>
     )
 }
 

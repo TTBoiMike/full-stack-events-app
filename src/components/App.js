@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import Login from './login'
 import UserAccount from './user/userAccount'

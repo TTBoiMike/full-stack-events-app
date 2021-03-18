@@ -1,6 +1,13 @@
+import { Container } from 'react-bootstrap';
+import HeaderNav from '../components/HeaderNav'
+
 let UpdateEvent = () => {
     return (
-<h1>Upfdate Page</h1>
+        <>
+            <HeaderNav />
+            <Container>
+            </Container>
+        </>
     )
 }
 

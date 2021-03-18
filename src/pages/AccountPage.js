@@ -1,6 +1,13 @@
+import { Container } from 'react-bootstrap';
+import HeaderNav from '../components/HeaderNav'
+
 let AccountPage = () => {
     return (
-        <h1>Account Page</h1>
+        <>
+            <HeaderNav />
+            <Container>
+            </Container>
+        </>
     )
 }
 
