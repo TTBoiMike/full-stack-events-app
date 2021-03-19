@@ -1,11 +1,12 @@
 import { Container } from 'react-bootstrap';
-import HeaderNav from '../components/HeaderNav'
+import { HeaderNav, AccountDetails } from '../components'
 
-let AccountPage = () => {
+let AccountPage = (props) => {
     return (
         <>
             <HeaderNav />
             <Container>
+                <AccountDetails logout={props.logout} />
             </Container>
         </>
     )

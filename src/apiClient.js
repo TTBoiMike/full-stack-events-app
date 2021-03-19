@@ -1,6 +1,6 @@
-import axios from 'axios'
-const url = 'https://fs-events-app.herokuapp.com/'
-
+import axios from 'axios';
+const url = 'https://fs-events-app.herokuapp.com/';
+    
 export default class ApiClient {
     constructor(token, logoutFunction) {
         this.token = token;

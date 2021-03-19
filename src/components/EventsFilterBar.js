@@ -2,7 +2,7 @@ import { Form, Button, } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import AddIcon from '../assets/plus-circle-solid.svg'
 
-let EventFilterBar = () => {
+let EventsFilterBar = () => {
     return (
         <section className="filter-bar my-5 rounded d-flex justify-content-between align-items-center">
             <div>
@@ -16,11 +16,11 @@ let EventFilterBar = () => {
                         <option value="favourites">Show Favourites</option>
                     </select>
                 </Form>
-                <Link to="/full-stack-events-app/user/add">
+                <Link to="/events/add">
                     <Button variant="btn button" className="d-flex align-items-center"><img height="20px" className="mr-1" src={AddIcon} alt="" />Add Event</Button>
                 </Link>
             </div>
         </section>
     )
 }
-export default EventFilterBar
+export default EventsFilterBar

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
 import ApiClient from './apiClient'
@@ -9,48 +9,53 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 let App = () => {
   const [loggedIn, loggedInHandler] = useState(false)
-  console.log("isLoggedIn", loggedIn)
+  const [user, setUser] = useState({})
 
   let apiClient = new ApiClient(
-    () => this.state.token,
+    () => window.localStorage.getItem("EventsAppUserToken"),
     () => this.logout()
   )
 
-  useEffect(() => {
-    if (localStorage.getItem("EventsAppUserToken")) {
-      loggedInHandler(true)
-    } else {
-      loggedInHandler(false)
-    }
-  }, []);
-
-  let loginFunction = (user, token) => {
-    console.log("Logged In")
-    window.localStorage.setItem("EventsAppUser", user)
-    window.localStorage.setItem("EventsAppUserToken", token)
+useEffect(() => {
+  if (localStorage.getItem("EventsAppUserToken")) {
+    let user = localStorage.getItem("EventsAppUser")
+    setUser(JSON.parse(user))
     loggedInHandler(true)
-  }
-
-  let logoutFunction = () => {
-    window.localStorage.removeItem("EventsAppUser")
-    window.localStorage.removeItem("EventsAppUserToken")
+  } else {
     loggedInHandler(false)
   }
-  
+}, []);
+
+let loginFunction = (user, token) => {
+  setUser(user)
+  window.localStorage.setItem("EventsAppUser", JSON.stringify(user))
+  window.localStorage.setItem("EventsAppUserToken", token)
+  loggedInHandler(true)
+}
+
+let logoutFunction = () => {
   window.localStorage.removeItem("EventsAppUser")
   window.localStorage.removeItem("EventsAppUserToken")
-  return (
-    <div id="App">
-      <Router>
-        <Switch>
-          <Route exact path="/" render={() => <LoginPage apiClient={apiClient} loggedIn={loggedIn} logInFunc={loginFunction} />} />
-          <ProtectedRoute exact path="/events" component={EventsPage} loggedIn={loggedIn} />
-          <ProtectedRoute exact path="/events/add" component={AddEvent} loggedIn={loggedIn} />
-          <ProtectedRoute exact path="/events/update/:id" component={UpdateEvent} loggedIn={loggedIn} />
-          <ProtectedRoute exact path="/profile" component={AccountPage} loggedIn={loggedIn} />
-        </Switch>
-      </Router>
-    </div>
-  )
+  loggedInHandler(false)
+  setUser({})
+}
+
+return (
+  <div id="App">
+    <Router>
+      <Switch>
+        <Route exact path="/" render={() => <LoginPage apiClient={apiClient} loggedIn={loggedIn} logInFunc={loginFunction} />} />
+        <ProtectedRoute exact path="/events"
+          component={EventsPage} loggedIn={loggedIn} props={{ apiClient: apiClient, user: user }} />
+        <ProtectedRoute exact path="/events/add"
+          component={AddEvent} loggedIn={loggedIn} />
+        <ProtectedRoute exact path="/events/update/:id"
+          component={UpdateEvent} loggedIn={loggedIn} />
+        <ProtectedRoute exact path="/profile"
+          component={AccountPage} loggedIn={loggedIn} props={{ logout: logoutFunction }} />
+      </Switch>
+    </Router>
+  </div>
+)
 }
 export default App
