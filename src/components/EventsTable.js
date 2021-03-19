@@ -9,7 +9,7 @@ let EventsTable = ({ allEvents }) => {
     let buildTable = () => {
         return allEvents.map(event => {
             return (
-                <tr ket={event._id} id={event._id}>
+                <tr key={event._id} id={event._id}>
                     <td>
                         <img className="fav-star" alt="" src={event.favourite ? favstar : star} />
                         {event.name}

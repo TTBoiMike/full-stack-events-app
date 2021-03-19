@@ -1,9 +1,13 @@
-import HeaderNav from '../components/HeaderNav'
+import { HeaderNav, EventForm } from '../components'
+import { Container } from 'react-bootstrap'
 
-let AddEvent = () => {
+let AddEvent = ({ user, apiClient }) => {
     return (
         <>
             <HeaderNav />
+            <Container>
+                <EventForm user={user} apiClient={apiClient}/>
+            </Container>
         </>
     )
 }
