@@ -19,6 +19,10 @@ header {
   background-color: #9377FF;
   color: #fff;
 }
+.button-delete {
+  background-color: #bd352c;
+  color: #fff;
+}
 .text-purple {
   color: #9377FF;
   font-weight: 700

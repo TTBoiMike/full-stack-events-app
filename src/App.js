@@ -11,13 +11,22 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 let App = () => {
   const [loggedIn, loggedInHandler] = useState(false)
   const [user, setUser] = useState({})
+  const [events, setEvents] = useState([])
 
   let apiClient = new ApiClient(
     () => window.localStorage.getItem("EventsAppUserToken"),
     () => this.logout()
   )
 
-  useEffect(() => {
+
+    let fetchEvents = async () => {
+        let events = await apiClient.getEvents();
+        setEvents(events.data)
+    };
+    
+    
+    useEffect(() => {
+    fetchEvents()
     if (localStorage.getItem("EventsAppUserToken")) {
       let user = localStorage.getItem("EventsAppUser")
       setUser(JSON.parse(user))
@@ -54,7 +63,7 @@ let App = () => {
             props={{ apiClient: apiClient, user: user }} />
           <ProtectedRoute exact path="/events/update/:id"
             component={UpdateEvent} loggedIn={loggedIn}
-            props={{ apiClient: apiClient, user: user }} />
+            props={{ apiClient: apiClient, user: user, events: events }} />
           <ProtectedRoute exact path="/profile"
             component={AccountPage} loggedIn={loggedIn}
             props={{ logout: logoutFunction }} />
