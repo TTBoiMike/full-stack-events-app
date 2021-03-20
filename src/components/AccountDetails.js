@@ -1,7 +1,29 @@
+import React, { useState } from 'react';
+import toastr from 'toastr'
+import 'toastr/build/toastr.min.css'
 import { Form, Button, Table, Tab, Tabs } from 'react-bootstrap';
-// import { Link } from 'react-router-dom';
 
-let AccountDetails = (props) => {
+let AccountDetails = ({logout, user, events, apiClient}) => {
+    const [userName, setUserName] = useState("")
+
+    let userEvents = (id) => {
+        let userEvents = events.filter(event => event.user === user.username)
+        return userEvents.length;
+    }
+
+    let updateUserName = (e) => {
+        e.preventDefault()
+        const newUser = {username: userName}
+        apiClient.updateUser(user.id, newUser)
+            .then(() => {
+                toastr.success(`Username updated!`)
+            })
+            .catch(err => {
+                toastr.warning("Unable to update username")
+            })
+            .finally(() => {setUserName("")})
+    }
+
     return (
         <>
             <h2 className="my-5">
@@ -23,23 +45,23 @@ let AccountDetails = (props) => {
                         <tbody>
                             <tr>
                                 <td>
-                                    Mike
+                                    {user.username}
                                 </td>
                                 <td>
-                                    3
+                                    {userEvents(user.username)}
                                 </td>
                             </tr>
                         </tbody>
                     </Table>
-                    <Button variant="btn button" onClick={props.logout}>
+                    <Button variant="btn button" onClick={logout}>
                         Logout
                     </Button>
                 </Tab>
                 <Tab eventKey="profile" title="Edit Account">
-                    <Form className="mt-3" id="account-form">
+                    <Form className="mt-3" id="account-form" onChange={(e) => setUserName(e.currentTarget.username.value)}onSubmit={(e) => updateUserName(e)}>
                         <div className="form-group">
                             <label htmlFor="username" className="text-light"> Change Username</label>
-                            <input style={{ width: "100%" }} className="input-styled" type="text" id="username" name="username" placeholder="new username" autoComplete="off" />
+                            <input value={userName} style={{ width: "100%" }} className="input-styled" type="text" id="username" name="username" placeholder="new username" autoComplete="off" />
                         </div>
                         <Button type="submit" variant="btn button">Submit</Button>
                     </Form>

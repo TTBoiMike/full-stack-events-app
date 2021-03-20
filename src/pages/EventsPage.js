@@ -7,7 +7,6 @@ import EventsFilterBar from '../components/EventsFilterBar'
 
 let EventsPage = ({ apiClient, user }) => {
     const [events, setEvents] = useState([])
-
     let fetchEvents = async () => {
         let events = await apiClient.getEvents();
         setEvents(events.data)
@@ -17,13 +16,24 @@ let EventsPage = ({ apiClient, user }) => {
         fetchEvents()
     }, []);
 
+    let favouriteEvent = (id) => {
+        let [event] = events.filter(event => event._id === id);
+        event.favourite = !event.favourite
+        apiClient.updateEvent(id, event)
+            .then(() => {
+                fetchEvents()
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
 
     return (
         <>
             <HeaderNav />
             <Container>
                 <EventsFilterBar />
-                <EventsTable allEvents={events} user={user} />
+                <EventsTable allEvents={events} apiClient={apiClient} favouriteEvent={favouriteEvent}/>
             </Container>
         </>
     )

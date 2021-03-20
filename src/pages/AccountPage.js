@@ -6,7 +6,7 @@ let AccountPage = (props) => {
         <>
             <HeaderNav />
             <Container>
-                <AccountDetails logout={props.logout} />
+                <AccountDetails logout={props.logout} user={props.user} events={props.events} apiClient={props.apiClient}/>
             </Container>
         </>
     )

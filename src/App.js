@@ -1,4 +1,4 @@
-import React, { useState, useEffect, } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
 import 'toastr/build/toastr.min.css';
@@ -66,7 +66,7 @@ let App = () => {
             props={{ apiClient: apiClient, user: user, events: events }} />
           <ProtectedRoute exact path="/profile"
             component={AccountPage} loggedIn={loggedIn}
-            props={{ logout: logoutFunction }} />
+            props={{ logout: logoutFunction, user: user, events: events, apiClient: apiClient}} />
         </Switch>
       </Router>
     </div>

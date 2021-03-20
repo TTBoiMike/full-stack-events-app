@@ -3,15 +3,14 @@ import { Link } from 'react-router-dom'
 import star from '../assets/star-regular.svg'
 import favstar from '../assets/star-solid.svg'
 
-let EventsTable = ({ allEvents, user }) => {
-
+let EventsTable = ({ allEvents, favouriteEvent}) => {
 
     let buildTable = () => {
         return allEvents.map(event => {
             return (
                 <tr key={event._id} id={event._id}>
                     <td>
-                        <img className="fav-star" alt="" src={event.favourite ? favstar : star} />
+                        <img className="fav-star" alt="" src={event.favourite ? favstar : star} onClick={() => favouriteEvent(event._id)}/>
                         {event.name}
                     </td>
                     <td className="d-flex flex-column">

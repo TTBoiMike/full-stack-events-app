@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react'
 import { Container } from 'react-bootstrap';
 import { HeaderNav, UpdateEventForm } from '../components'
 
