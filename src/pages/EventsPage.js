@@ -18,13 +18,12 @@ let EventsPage = ({ apiClient, user }) => {
     }, []);
 
 
-    console.log("events", events)
     return (
         <>
             <HeaderNav />
             <Container>
                 <EventsFilterBar />
-                <EventsTable allEvents={events} />
+                <EventsTable allEvents={events} user={user} />
             </Container>
         </>
     )

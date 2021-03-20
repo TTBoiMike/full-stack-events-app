@@ -47,13 +47,17 @@ let App = () => {
         <Switch>
           <Route exact path="/" render={() => <LoginPage apiClient={apiClient} loggedIn={loggedIn} logInFunc={loginFunction} />} />
           <ProtectedRoute exact path="/events"
-            component={EventsPage} loggedIn={loggedIn} props={{ apiClient: apiClient, user: user }} />
+            component={EventsPage} loggedIn={loggedIn}
+            props={{ apiClient: apiClient, user: user }} />
           <ProtectedRoute exact path="/events/add"
-            component={AddEvent} loggedIn={loggedIn} props={{ apiClient: apiClient, user: user }} />
+            component={AddEvent} loggedIn={loggedIn}
+            props={{ apiClient: apiClient, user: user }} />
           <ProtectedRoute exact path="/events/update/:id"
-            component={UpdateEvent} loggedIn={loggedIn} />
+            component={UpdateEvent} loggedIn={loggedIn}
+            props={{ apiClient: apiClient, user: user }} />
           <ProtectedRoute exact path="/profile"
-            component={AccountPage} loggedIn={loggedIn} props={{ logout: logoutFunction }} />
+            component={AccountPage} loggedIn={loggedIn}
+            props={{ logout: logoutFunction }} />
         </Switch>
       </Router>
     </div>

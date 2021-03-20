@@ -11,7 +11,7 @@ let EventsFilterBar = () => {
             <div className="d-flex align-items-center">
                 <Form className="mr-3">
                     <select id="filter">
-                        <option value="recently-added" selected>Recently Added</option>
+                        <option defaultValue="recently-added">Recently Added</option>
                         <option value="by-date">Filter by Date</option>
                         <option value="favourites">Show Favourites</option>
                     </select>

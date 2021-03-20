@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import star from '../assets/star-regular.svg'
 import favstar from '../assets/star-solid.svg'
 
-let EventsTable = ({ allEvents }) => {
+let EventsTable = ({ allEvents, user }) => {
 
 
     let buildTable = () => {
@@ -25,7 +25,7 @@ let EventsTable = ({ allEvents }) => {
                         {event.user}
                     </td>
                     <td>
-                        <Link to={`/full-stack-events-app/user/update/${event._id}`}>
+                        <Link to={`/events/update/${event._id}`}>
                             <Button className="w-100" variant="btn button">Manage Event</Button>
                         </Link>
                     </td>

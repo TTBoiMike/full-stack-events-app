@@ -6,6 +6,7 @@ let AddEvent = ({ user, apiClient }) => {
         <>
             <HeaderNav />
             <Container>
+                <h3 className="my-5">Add Event</h3>
                 <EventForm user={user} apiClient={apiClient}/>
             </Container>
         </>
