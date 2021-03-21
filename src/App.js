@@ -11,7 +11,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 let App = () => {
   const [loggedIn, loggedInHandler] = useState(false)
   const [user, setUser] = useState({})
-  const [events, setEvents] = useState([])
+  const [allEvents, setAllEvents] = useState([])
 
   let apiClient = new ApiClient(
     () => window.localStorage.getItem("EventsAppUserToken"),
@@ -19,13 +19,14 @@ let App = () => {
   )
 
 
-    let fetchEvents = async () => {
-        let events = await apiClient.getEvents();
-        setEvents(events.data)
-    };
-    
-    
-    useEffect(() => {
+
+  let fetchEvents = async () => {
+    let events = await apiClient.getEvents();
+    setAllEvents(events.data)
+  };
+
+
+  useEffect(() => {
     fetchEvents()
     if (localStorage.getItem("EventsAppUserToken")) {
       let user = localStorage.getItem("EventsAppUser")
@@ -35,6 +36,7 @@ let App = () => {
       loggedInHandler(false)
     }
   }, []);
+
 
   let loginFunction = (user, token) => {
     setUser(user)
@@ -50,6 +52,7 @@ let App = () => {
     setUser({})
   }
 
+
   return (
     <div id="App">
       <Router>
@@ -63,10 +66,10 @@ let App = () => {
             props={{ apiClient: apiClient, user: user }} />
           <ProtectedRoute exact path="/events/update/:id"
             component={UpdateEvent} loggedIn={loggedIn}
-            props={{ apiClient: apiClient, user: user, events: events }} />
+            props={{ apiClient: apiClient, user: user, events: allEvents }} />
           <ProtectedRoute exact path="/profile"
             component={AccountPage} loggedIn={loggedIn}
-            props={{ logout: logoutFunction, user: user, events: events, apiClient: apiClient}} />
+            props={{ logout: logoutFunction, user: user, events: allEvents, apiClient: apiClient }} />
         </Switch>
       </Router>
     </div>

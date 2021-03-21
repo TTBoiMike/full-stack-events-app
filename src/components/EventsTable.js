@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom'
 import star from '../assets/star-regular.svg'
 import favstar from '../assets/star-solid.svg'
 
-let EventsTable = ({ allEvents, favouriteEvent}) => {
+let EventsTable = ({ events, favouriteEvent }) => {
+    
+    console.log(events)
 
     let buildTable = () => {
-        return allEvents.map(event => {
+        return events.map(event => {
             return (
                 <tr key={event._id} id={event._id}>
                     <td>
