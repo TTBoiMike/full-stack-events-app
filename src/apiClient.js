@@ -55,6 +55,10 @@ export default class ApiClient {
     updateUser(id, user) {
         return this.createUserAction('put', `${url}user/${id}`, user)
     }
+    // delete user
+    deleteUser(id) {
+        return this.createUserAction('delete', `${url}user/${id}`)
+    }
     // create new event in database
     createEvent(event) {
         return this.createUserAction('post', url, event)
