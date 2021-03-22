@@ -64,7 +64,7 @@ let App = () => {
           <ProtectedRoute exact path="/events/add"
             component={AddEvent} loggedIn={loggedIn}
             props={{ apiClient: apiClient, user: user }} />
-          <ProtectedRoute exact path="/update/:id"
+          <ProtectedRoute exact path="/events/update/:id"
             component={UpdateEvent} loggedIn={loggedIn}
             props={{ apiClient: apiClient, user: user, events: allEvents }} />
           <ProtectedRoute exact path="/profile"
