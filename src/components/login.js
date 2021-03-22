@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Card, Form, Container, Button } from 'react-bootstrap';
+import Loader from '../assets/loading-gif.gif'
 
 let Login = (props) => {
     // disabled login button to prevent multiple requests
@@ -16,7 +17,7 @@ let Login = (props) => {
                 setDisabled(false)
             })
             .catch(err => {
-                console.log(err)
+                setDisabled(false)
                 if (err.response.status === 401) {
                     alert("Username or password incorrect")
                 } else {
@@ -34,16 +35,16 @@ let Login = (props) => {
                 <Card.Body>
                     <Form onSubmit={(e) => handleLogin(e)}>
                         <Form.Group controlId="formBasicEmail" id="login-form">
-                            <input style={{width: "100%"}} placeholder="Username" className="input-styled" type="username" name="username" />
+                            <input style={{ width: "100%" }} placeholder="Username" className="input-styled" type="username" name="username" />
                         </Form.Group>
                         <Form.Group controlId="formBasicPassword">
-                            <input style={{width: "100%"}} placeholder="Password" className="input-styled" type="Password" name="password" />
+                            <input style={{ width: "100%" }} placeholder="Password" className="input-styled" type="Password" name="password" />
                         </Form.Group>
-                        <Button variant="primary" className="my-2" type="submit">
-                            {disabled ? "...logging in" : "login"}
-                        </Button>
+                        <button style={{ width: "100%" }} className="my-2 btn button" type="submit" disabled={disabled}>
+                            {disabled ? <img id="loader" src={Loader} alt="...loading" /> : "login"}
+                        </button>
                     </Form>
-                    <small>username: mike, keith, july <br /> password: test</small>
+                    <small>Username: mike<br /> Password: test</small>
                 </Card.Body>
             </Card>
         </Container>
