@@ -60,7 +60,7 @@ let EventForm = ({ user, apiClient }) => {
                 <textarea style={{ width: "100%" }} className="input-styled" name="description" rows="3" />
             </div>
             <button type="submit" className="btn button mr-3">Add Event</button>
-            <Link to="/events">
+            <Link to="/full-stack-events-app/events">
                 <Button variant="outline-light">Cancel</Button>
             </Link>
         </Form>
