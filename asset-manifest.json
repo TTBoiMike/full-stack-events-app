@@ -1,29 +1,30 @@
 {
   "files": {
-    "main.css": "/full-stack-events-app/static/css/main.0ac35812.chunk.css",
-    "main.js": "/full-stack-events-app/static/js/main.23abaf63.chunk.js",
-    "main.js.map": "/full-stack-events-app/static/js/main.23abaf63.chunk.js.map",
-    "runtime-main.js": "/full-stack-events-app/static/js/runtime-main.498fb6a1.js",
-    "runtime-main.js.map": "/full-stack-events-app/static/js/runtime-main.498fb6a1.js.map",
-    "static/css/2.3a836225.chunk.css": "/full-stack-events-app/static/css/2.3a836225.chunk.css",
-    "static/js/2.b097fec1.chunk.js": "/full-stack-events-app/static/js/2.b097fec1.chunk.js",
-    "static/js/2.b097fec1.chunk.js.map": "/full-stack-events-app/static/js/2.b097fec1.chunk.js.map",
-    "static/js/3.3464e2bb.chunk.js": "/full-stack-events-app/static/js/3.3464e2bb.chunk.js",
-    "static/js/3.3464e2bb.chunk.js.map": "/full-stack-events-app/static/js/3.3464e2bb.chunk.js.map",
+    "main.css": "/full-stack-events-app/static/css/main.a5ad7763.chunk.css",
+    "main.js": "/full-stack-events-app/static/js/main.10b7e401.chunk.js",
+    "main.js.map": "/full-stack-events-app/static/js/main.10b7e401.chunk.js.map",
+    "runtime-main.js": "/full-stack-events-app/static/js/runtime-main.b3172f9f.js",
+    "runtime-main.js.map": "/full-stack-events-app/static/js/runtime-main.b3172f9f.js.map",
+    "static/css/2.4232a0be.chunk.css": "/full-stack-events-app/static/css/2.4232a0be.chunk.css",
+    "static/js/2.855485a7.chunk.js": "/full-stack-events-app/static/js/2.855485a7.chunk.js",
+    "static/js/2.855485a7.chunk.js.map": "/full-stack-events-app/static/js/2.855485a7.chunk.js.map",
+    "static/js/3.364a1921.chunk.js": "/full-stack-events-app/static/js/3.364a1921.chunk.js",
+    "static/js/3.364a1921.chunk.js.map": "/full-stack-events-app/static/js/3.364a1921.chunk.js.map",
     "index.html": "/full-stack-events-app/index.html",
-    "static/css/2.3a836225.chunk.css.map": "/full-stack-events-app/static/css/2.3a836225.chunk.css.map",
-    "static/css/main.0ac35812.chunk.css.map": "/full-stack-events-app/static/css/main.0ac35812.chunk.css.map",
-    "static/js/2.b097fec1.chunk.js.LICENSE.txt": "/full-stack-events-app/static/js/2.b097fec1.chunk.js.LICENSE.txt",
+    "static/css/2.4232a0be.chunk.css.map": "/full-stack-events-app/static/css/2.4232a0be.chunk.css.map",
+    "static/css/main.a5ad7763.chunk.css.map": "/full-stack-events-app/static/css/main.a5ad7763.chunk.css.map",
+    "static/js/2.855485a7.chunk.js.LICENSE.txt": "/full-stack-events-app/static/js/2.855485a7.chunk.js.LICENSE.txt",
+    "static/media/loading-gif.30c0aa7c.gif": "/full-stack-events-app/static/media/loading-gif.30c0aa7c.gif",
     "static/media/plus-circle-solid.3a4d615f.svg": "/full-stack-events-app/static/media/plus-circle-solid.3a4d615f.svg",
     "static/media/star-regular.128d02cb.svg": "/full-stack-events-app/static/media/star-regular.128d02cb.svg",
     "static/media/star-solid.ad4ae2e6.svg": "/full-stack-events-app/static/media/star-solid.ad4ae2e6.svg",
     "static/media/user-circle-solid.0633ff3e.svg": "/full-stack-events-app/static/media/user-circle-solid.0633ff3e.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.498fb6a1.js",
-    "static/css/2.3a836225.chunk.css",
-    "static/js/2.b097fec1.chunk.js",
-    "static/css/main.0ac35812.chunk.css",
-    "static/js/main.23abaf63.chunk.js"
+    "static/js/runtime-main.b3172f9f.js",
+    "static/css/2.4232a0be.chunk.css",
+    "static/js/2.855485a7.chunk.js",
+    "static/css/main.a5ad7763.chunk.css",
+    "static/js/main.10b7e401.chunk.js"
   ]
 }
