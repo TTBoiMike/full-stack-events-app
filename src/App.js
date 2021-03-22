@@ -1,64 +1,78 @@
-import React from 'react';
-// import Login from './components/login'
-// import UserAccount from './components/user/userAccount'
-import {Home, Add, Entry, Update, UserProfile} from './pages'
-import {HashRouter as Router, Switch, Route, Redirect} from 'react-router-dom'
+import React, { useState, useEffect } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css'
+import 'toastr/build/toastr.min.css';
+import ApiClient from './apiClient'
+import { AccountPage, AddEvent, UpdateEvent, EventsPage, LoginPage } from './pages'
+import ProtectedRoute from './components/protectedRoute'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-        token: window.localStorage.getItem("token"),
-        userId: window.localStorage.getItem("UserId"),
-      }
-    this.apiClient = new ApiClient(
-        () => this.state.token,
-        () => this.logout()
-    )
+
+let App = () => {
+  const [loggedIn, loggedInHandler] = useState(false)
+  const [user, setUser] = useState({})
+  const [allEvents, setAllEvents] = useState([])
+
+  let apiClient = new ApiClient(
+    () => window.localStorage.getItem("EventsAppUserToken"),
+    () => this.logout()
+  )
+
+
+
+  let fetchEvents = async () => {
+    let events = await apiClient.getEvents();
+    setAllEvents(events.data)
+  };
+
+
+  useEffect(() => {
+    fetchEvents()
+    if (localStorage.getItem("EventsAppUserToken")) {
+      let user = localStorage.getItem("EventsAppUser")
+      setUser(JSON.parse(user))
+      loggedInHandler(true)
+    } else {
+      loggedInHandler(false)
+    }
+  }, []);
+
+
+  let loginFunction = (user, token) => {
+    setUser(user)
+    window.localStorage.setItem("EventsAppUser", JSON.stringify(user))
+    window.localStorage.setItem("EventsAppUserToken", token)
+    loggedInHandler(true)
   }
 
-  login = (userId, token) => {
-    window.localStorage.setItem("token", token)
-    window.localStorage.setItem("UserId", userId)
-    this.setState({
-      token: token,
-      userId: userId,
-    })
+  let logoutFunction = () => {
+    window.localStorage.removeItem("EventsAppUser")
+    window.localStorage.removeItem("EventsAppUserToken")
+    loggedInHandler(false)
+    setUser({})
   }
 
-logout = () => {
-    window.localStorage.removeItem("token")
-    window.localStorage.removeItem("UserId")
-    this.setState({
-      token: undefined,
-      userId: undefined,
-    })
+
+  return (
+    <div id="App">
+      <Router>
+        <Switch>
+          <Route exact path="/" render={() => <LoginPage apiClient={apiClient} loggedIn={loggedIn} logInFunc={loginFunction} />} />
+          <ProtectedRoute exact path="/events"
+            component={EventsPage} loggedIn={loggedIn}
+            props={{ apiClient: apiClient, user: user }} />
+          <ProtectedRoute exact path="/events/add"
+            component={AddEvent} loggedIn={loggedIn}
+            props={{ apiClient: apiClient, user: user }} />
+          <ProtectedRoute exact path="/events/update/:id"
+            component={UpdateEvent} loggedIn={loggedIn}
+            props={{ apiClient: apiClient, user: user, events: allEvents }} />
+          <ProtectedRoute exact path="/profile"
+            component={AccountPage} loggedIn={loggedIn}
+            props={{ logout: logoutFunction, user: user, events: allEvents, apiClient: apiClient }} />
+        </Switch>
+      </Router>
+    </div>
+  )
 }
-
-  render() {   
-    return (
-      <div>
-        <Router>
-          <switch>
-            <Route exact path="/" component={Entry} />
-            <Route exact path="/user" component={Home} />
-            <Route exact path="/user/profile" component={UserProfile} />
-            <Route exact path="/user/add" component={Add} />
-            <Route exact path="/user/update/:id" component={Update} />
-          </switch>
-        </Router> 
-      </div>
-    )
-
-
-
-
-      // if(this.state.isLoggedIn) {
-      //   return <UserAccount userId={this.state.userId} client={this.apiClient} logout={this.logout}/>
-      // } else {
-      //   return <Login login={this.login} client={this.apiClient}/>
-      // }
-  }
-}
-
-export default App;
+export default App

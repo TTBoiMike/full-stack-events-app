@@ -1,6 +1,6 @@
-import axios from 'axios'
-const url = 'https://fs-events-app.herokuapp.com/'
-
+import axios from 'axios';
+const url = 'https://fs-events-app.herokuapp.com/';
+    
 export default class ApiClient {
     constructor(token, logoutFunction) {
         this.token = token;
@@ -54,6 +54,10 @@ export default class ApiClient {
     // update user info
     updateUser(id, user) {
         return this.createUserAction('put', `${url}user/${id}`, user)
+    }
+    // delete user
+    deleteUser(id) {
+        return this.createUserAction('delete', `${url}user/${id}`)
     }
     // create new event in database
     createEvent(event) {
