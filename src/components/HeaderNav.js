@@ -12,7 +12,7 @@ let HeaderNav = () => {
                     <Nav className="mr-auto">
                         <Link to="/events" className="mr-3 nav-link text-light">View Events</Link>
                     </Nav>
-                    <Link to="/full-stack-events-app/profile">
+                    <Link to="/profile">
                         <Button variant="btn" className="mr-2 button d-flex align-items-center">
                             <img height="20px" className="mr-1" src={UserIcon} alt="" />Profile
                         </Button>

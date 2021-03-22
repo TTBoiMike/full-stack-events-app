@@ -77,7 +77,7 @@ let UpdateEventForm = ({ eventId, apiClient }) => {
     }
 
     if (redirect) {
-        return <Redirect to="/full-stack-events-app/events" />
+        return <Redirect to="/events" />
     } else {
         return (
             <Form className="mb-5" onChange={(e) => updateForm(e)} onSubmit={(e) => submitForm(e)}>
@@ -105,7 +105,7 @@ let UpdateEventForm = ({ eventId, apiClient }) => {
                 </div>
                 <button type="submit" className="btn button mr-3">Update Event</button>
                 <button onClick={() => deleteEvent(eventDetails._id)} className="btn button-delete mr-3">Delete Event</button>
-                <Link to="/full-stack-events-app/events">
+                <Link to="/events">
                     <Button className="btn" variant="outline-light" >Cancel</Button>
                 </Link>
             </Form>
