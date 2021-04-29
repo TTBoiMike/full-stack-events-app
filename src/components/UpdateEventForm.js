@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import toastr from "toastr";
 import "toastr/build/toastr.min.css";
 import { Form, Button } from "react-bootstrap";
-import { Link, Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom"
+import {useUser} from '../assets/User.context'
 
 let UpdateEventForm = ({ eventId, apiClient }) => {
   const [eventDetails, setEventDetails] = useState({
@@ -16,6 +17,7 @@ let UpdateEventForm = ({ eventId, apiClient }) => {
     user: "",
   });
   const [redirect, setRedirect] = useState(false);
+  const user = useUser();
 
   useEffect(() => {
     apiClient

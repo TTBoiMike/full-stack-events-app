@@ -42,7 +42,6 @@ let EventsPage = ({ apiClient, user }) => {
             let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
             let yyyy = today.getFullYear();
             today = mm + '/' + dd + '/' + yyyy;
-            console.log(today)
             let filterByDate = events.filter(event => new Date(event.date) > new Date(today))
             let chronoDates = filterByDate.sort((a, b) => new Date(a.date) - new Date(b.date))
             setEventsToShow(chronoDates)

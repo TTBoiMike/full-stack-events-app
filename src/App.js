@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { User } from "./assets/User.context";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import "toastr/build/toastr.min.css";
@@ -57,40 +58,43 @@ let App = () => {
     <div id="App">
       <Router>
         <Switch>
-          <Route
-            exact
-            path="/"
-            render={() => (
-              <LoginPage
-                apiClient={apiClient}
+          <User.Provider value={user}>
+            <Route
+              exact
+              path="/"
+              render={() => (
+                <LoginPage
+                  apiClient={apiClient}
+                  loggedIn={loggedIn}
+                  logInFunc={loginFunction}
+                />
+              )}
+            />
+            <ProtectedRoute exact path="/events" loggedIn={loggedIn}>
+              <EventsPage
                 loggedIn={loggedIn}
-                logInFunc={loginFunction}
+                apiClient={apiClient}
               />
-            )}
-          />
-          <ProtectedRoute exact path="/events" loggedIn={loggedIn}>
-            <EventsPage loggedIn={loggedIn} apiClient={apiClient} user={user} />
-          </ProtectedRoute>
-          <ProtectedRoute exact path="/events/add" loggedIn={loggedIn}>
-            <AddEvent loggedIn={loggedIn} apiClient={apiClient} user={user} />
-          </ProtectedRoute>
-          <ProtectedRoute exact path="/events/update/:id" loggedIn={loggedIn}>
-            <UpdateEvent
-              loggedIn={loggedIn}
-              events={allEvents}
-              apiClient={apiClient}
-              user={user}
-            />
-          </ProtectedRoute>
-          <ProtectedRoute exact path="/profile" loggedIn={loggedIn}>
-            <AccountPage
-              loggedIn={loggedIn}
-              logout={logoutFunction}
-              events={allEvents}
-              apiClient={apiClient}
-              user={user}
-            />
-          </ProtectedRoute>
+            </ProtectedRoute>
+            <ProtectedRoute exact path="/events/add" loggedIn={loggedIn}>
+              <AddEvent loggedIn={loggedIn} apiClient={apiClient} />
+            </ProtectedRoute>
+            <ProtectedRoute exact path="/events/update/:id" loggedIn={loggedIn}>
+              <UpdateEvent
+                loggedIn={loggedIn}
+                events={allEvents}
+                apiClient={apiClient}
+              />
+            </ProtectedRoute>
+            <ProtectedRoute exact path="/profile" loggedIn={loggedIn}>
+              <AccountPage
+                loggedIn={loggedIn}
+                logout={logoutFunction}
+                events={allEvents}
+                apiClient={apiClient}
+              />
+            </ProtectedRoute>
+          </User.Provider>
         </Switch>
       </Router>
     </div>
