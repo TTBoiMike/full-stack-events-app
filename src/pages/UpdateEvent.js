@@ -1,18 +1,19 @@
-import { Container } from 'react-bootstrap';
-import { HeaderNav, UpdateEventForm } from '../components'
+import { Container } from "react-bootstrap";
+import { useParams } from "react-router-dom";
+import { HeaderNav, UpdateEventForm } from "../components";
 
-let UpdateEvent = (props) => {
-    const eventId = props.match.params.id;
+let UpdateEvent = ({apiClient}) => {
+  const eventId = useParams() 
+    
+  return (
+    <>
+      <HeaderNav />
+      <Container>
+        <h3 className="my-5">Update Event</h3>
+        <UpdateEventForm apiClient={apiClient} eventId={eventId.id} />
+      </Container>
+    </>
+  );
+};
 
-    return (
-        <>
-            <HeaderNav />
-            <Container>
-                <h3 className="my-5">Update Event</h3>
-                <UpdateEventForm apiClient={props.apiClient} eventId={eventId} />
-            </Container>
-        </>
-    )
-}
-
-export default UpdateEvent
+export default UpdateEvent;
