@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Filter from '../filter'
 import { Container } from 'react-bootstrap';
 import HeaderNav from '../components/HeaderNav'
 import EventsTable from '../components/EventsTable'

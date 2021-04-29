@@ -4,8 +4,6 @@ import star from '../assets/star-regular.svg'
 import favstar from '../assets/star-solid.svg'
 
 let EventsTable = ({ events, favouriteEvent }) => {
-    
-    console.log(events)
 
     let buildTable = () => {
         return events.map(event => {
