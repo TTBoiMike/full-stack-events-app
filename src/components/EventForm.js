@@ -3,9 +3,11 @@ import { Form, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import 'toastr/build/toastr.min.css';
 import toastr from 'toastr'
+import {useUser} from '../assets/User.context'
 
-let EventForm = ({ user, apiClient }) => {
+let EventForm = ({ apiClient }) => {
     const [event, setEvent] = useState({})
+    const user = useUser();
     let createEvent = (e) => {
         setEvent({
             name: e.currentTarget.name.value,
@@ -22,7 +24,6 @@ let EventForm = ({ user, apiClient }) => {
         e.preventDefault()
         apiClient.createEvent(event)
             .then(response => {
-                console.log(response)
                 toastr.success(response.data.message)
                 e.target.name.value = "";
                 e.target.date.value = "";

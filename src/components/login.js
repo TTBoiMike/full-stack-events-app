@@ -11,10 +11,9 @@ let Login = (props) => {
         setDisabled(true)
         props.apiClient.logIn(e.target.username.value, e.target.password.value)
             .then(response => {
-                console.log(response)
+                setDisabled(false)
                 const user = { username: response.data._doc.username, id: response.data._doc._id }
                 props.logInFunc(user, response.data.token)
-                setDisabled(false)
             })
             .catch(err => {
                 setDisabled(false)

@@ -1,8 +1,12 @@
 import { Button, Table } from 'react-bootstrap';
 import toastr from 'toastr'
 import 'toastr/build/toastr.min.css'
+import {useUser} from '../assets/User.context'
 
-let AccountDetails = ({ logout, user, events, apiClient }) => {
+let AccountDetails = ({ logout, events, apiClient }) => {
+    const user = useUser();
+
+    console.log("user", user)
 
     let userEvents = (id) => {
         let userEvents = events.filter(event => event.user === user.username)
